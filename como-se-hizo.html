@@ -154,6 +154,32 @@
       </div>
     </section>
 
+    <!-- 5. Cliente GUI Portable Windows -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+        <span class="text-emerald-400">05.</span> Cliente GUI Portable para Windows y Conexión Automática
+      </h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Para que el profesorado no tenga que abrir una consola SSH ni interactuar con la línea de comandos de Linux, se ha desarrollado una solución de escritorio <strong>100% portable y transparente</strong>:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <h4 class="font-bold text-emerald-400 text-sm">⚙️ Servicio Systemd en la Máquina Virtual</h4>
+          <p class="text-slate-300 leading-relaxed">
+            Se ha creado y habilitado el servicio <code>opencode.service</code> en <code>/etc/systemd/system/</code>. Al encender la máquina virtual, OpenCode v2 inicia automáticamente en segundo plano escuchando en el puerto <code>49374</code>, asociado al usuario <code>docente</code> y autenticado con un token interno preconfigurado.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <h4 class="font-bold text-teal-400 text-sm">🪟 Aplicación Nativa Windows (Go + Win32)</h4>
+          <p class="text-slate-300 leading-relaxed">
+            El ejecutable <code>OpenCode-EducaMadrid.exe</code> es un binario independiente de 5.2 MB sin instalador. Incluye recursos de versión y un icono multi-resolución. Al ejecutarse, detecta automáticamente la máquina virtual, muestra una ventana de espera si la VM está iniciando, y abre una ventana de aplicación dedicada (modo <code>--app</code> con Edge o Chrome) con perfil aislado.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->

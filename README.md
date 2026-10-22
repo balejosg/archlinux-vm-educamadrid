@@ -10,9 +10,26 @@ Su propósito fundamental es proporcionar un entorno ágil, potente y automatiza
 
 * 🌐 **Sitio Web Oficial / Portal de Descargas**: [https://balejosg.github.io/archlinux-vm-educamadrid/](https://balejosg.github.io/archlinux-vm-educamadrid/)
 * 📖 **Caso de Estudio Técnico**: [https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html](https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html)
-* 📦 **Descarga directa (.zip, 1.73 GB)**: [ArchLinux-EducaMadrid.ova.zip (v1.0.0)](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/ArchLinux-EducaMadrid.ova.zip)
-* 🔒 **SHA-256 (ZIP)**: `165f65c738bedbd55cc2c1086afd5e104d8195bfb1cdadaf7ee7961868652b7a`
-* 🔒 **SHA-256 (OVA descomprimido)**: `63f419f29805bb4b0a51ba87d407c59eaac145bdb41735e8d68365cacc328d6d`
+* 💻 **Cliente GUI Portable Windows (1 Clic)**: [OpenCode-EducaMadrid-GUI-Windows.zip](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/OpenCode-EducaMadrid-GUI-Windows.zip) (2.3 MB)
+* 📦 **Máquina Virtual OVA (.zip, 1.73 GB)**: [ArchLinux-EducaMadrid.ova.zip (v1.0.0)](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/ArchLinux-EducaMadrid.ova.zip)
+* 🔒 **SHA-256 (OVA.ZIP)**: `10d2c7d4ea246b2f05bd66ffb1932f74079124dd173e550ebb5e9d8d9cc8f061`
+* 🔒 **SHA-256 (GUI Portable ZIP)**: `0f7caaa53db131ac743e4aaa6ad8f50c6596689e8a7f5df8454621b686022a3c`
+
+---
+
+## ⚡ Conexión Automática 1 Clic desde Windows (Sin Consola)
+
+Para los docentes que no desean usar la terminal ni interactuar con comandos Linux, la máquina virtual y el cliente portable permiten trabajar con 1 clic:
+
+1. **Inicia la máquina virtual en VirtualBox:**
+   * Selecciona `ArchLinux-EducaMadrid` y haz clic en **Iniciar** (modo normal o en segundo plano).
+   * El servicio OpenCode v2 arranca automáticamente en el arranque de la máquina.
+2. **Ejecuta el Cliente Portable en Windows:**
+   * Haz doble clic en `OpenCode-EducaMadrid.exe` (o `Iniciar-OpenCode.bat`).
+3. **Conexión transparente:**
+   * La aplicación comprueba automáticamente la disponibilidad de la máquina. Si la VM aún está arrancando, muestra una pantalla de espera y reintenta de forma automática.
+   * Se abrirá una ventana de aplicación nativa e independiente (modo app de escritorio, sin barras de navegación ni pestañas) conectada a OpenCode v2 sin pedir direcciones IP ni contraseñas.
+   * Mantiene tus conversaciones y preferencias en un perfil aislado en tu equipo.
 
 ---
 
