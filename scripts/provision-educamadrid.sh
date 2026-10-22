@@ -59,7 +59,6 @@ pacman -Sy --noconfirm --needed \
     poppler \
     imagemagick optipng jpegoptim \
     graphviz \
-    libreoffice-fresh \
     ttf-dejavu ttf-liberation noto-fonts \
     python python-pip python-virtualenv \
     python-pillow python-matplotlib python-requests

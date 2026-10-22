@@ -29,7 +29,7 @@ A diferencia de las máquinas virtuales dirigidas a estudiantes de programación
 | :--- | :--- | :--- |
 | **🌐 HTML Moodle** | `estilos-educamadrid.css`, `limpiar_html_moodle.py`, BeautifulSoup4 | Diseñar lecciones atractivas con tarjetas didácticas, desplegables interactivos sin JS, tablas responsivas y validador de seguridad para Atto/TinyMCE. |
 | **📝 Cuestionarios** | `generador_gift.py`, Moodle XML | Generar bancos completos de preguntas tipo test, V/F, emparejamiento y respuesta corta con retroalimentación para importar al Banco de Preguntas. |
-| **📄 Documentos** | Pandoc, `python-docx`, LibreOffice Fresh headless | Crear guías docentes, situaciones de aprendizaje y rúbricas LOMLOE tabuladas en formato DOCX y PDF. |
+| **📄 Documentos** | Pandoc (binario autónomo), `python-docx` | Crear guías docentes, situaciones de aprendizaje y rúbricas LOMLOE tabuladas en formato DOCX y Markdown sin dependencias pesadas de escritorio. |
 | **📚 PDFs** | `pdfplumber`, `pypdf`, `weasyprint`, Poppler | Analizar libros de texto y currículos oficiales en PDF (BOE/BOCM) y compilar resúmenes de apuntes de alta fidelidad. |
 | **🖼️ Imágenes** | ImageMagick, OptiPNG, Jpegoptim, Graphviz (`dot`) | Comprimir imágenes para no exceder cuotas de disco en el aula virtual (&lt;350 KB) y generar mapas conceptuales automáticos. |
 
