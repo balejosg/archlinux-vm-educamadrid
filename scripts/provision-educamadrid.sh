@@ -46,7 +46,9 @@ systemctl stop mosquitto.service 2>/dev/null || true
 systemctl disable mosquitto.service 2>/dev/null || true
 
 # Eliminar paquetes si están instalados (sin fallar si no existen)
-pacman -Rdd --noconfirm jdk-openjdk openjdk-src maven mosquitto powertop scaphandre docker docker-compose 2>/dev/null || true
+pacman -Rdd --noconfirm java-runtime-common jre-openjdk jdk-openjdk openjdk-src maven mosquitto powertop scaphandre docker docker-compose 2>/dev/null || true
+rm -rf /usr/lib/jvm
+rm -f /usr/bin/java /usr/bin/javac /usr/bin/mvn
 
 # 3. Instalación de paquetes oficiales para Documentos, Imágenes y HTML
 echo "[3/7] Instalando herramientas de procesamiento de Documentos, Imágenes y HTML..."
@@ -75,20 +77,9 @@ pip install --break-system-packages --upgrade \
 
 # 5. Instalación de OPENCODE v2 (Único programa de agentes)
 echo "[5/7] Instalando OpenCode v2..."
-# Intentar vía instalador oficial v2
-export VERSION="2.1.2"
-curl -fsSL https://opencode.ai/v2/install | bash || true
-
-# Como respaldo o para asegurar binario global en /usr/local/bin:
-if ! command -v opencode >/dev/null 2>&1; then
-    npm install -g @opencode/cli@latest || true
-fi
-
-# Verificar ubicación de binario
-if [ -f /root/.opencode/bin/opencode ] && [ ! -f /usr/local/bin/opencode ]; then
-    cp /root/.opencode/bin/opencode /usr/local/bin/opencode
-    chmod 755 /usr/local/bin/opencode
-fi
+rm -f /usr/local/bin/opencode /root/.opencode/bin/opencode
+npm install -g --ignore-scripts=false --allow-scripts=@opencode/cli @opencode/cli@latest
+cd /usr/lib/node_modules/@opencode/cli && node ./postinstall.mjs || true
 
 echo "✓ Versión instalada de OpenCode:"
 opencode --version 2>&1 || true

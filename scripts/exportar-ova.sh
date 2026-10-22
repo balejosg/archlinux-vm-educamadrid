@@ -29,9 +29,9 @@ if [ "${VM_STATE}" != "running" ]; then
 fi
 
 # 2. Limpieza de cachés de paquetes y zero-fill para compresión máxima
-echo "🧹 Limpiando cachés de pacman y rellenando espacio libre con ceros..."
+echo "🧹 Limpiando cachés de paquetes, npm y rellenando espacio libre con ceros..."
 SSH_ASKPASS=/tmp/askpass_docente.sh SSH_ASKPASS_REQUIRE=force setsid -w ssh $SSH_OPTS docente@127.0.0.1 \
-    "echo docente | sudo -S bash -c 'pacman -Scc --noconfirm || true; rm -rf /tmp/* /var/tmp/*; cat /dev/zero > /zero.dat 2>/dev/null || true; rm -f /zero.dat; sync'" || true
+    "echo docente | sudo -S bash -c 'rm -rf /var/cache/pacman/pkg/* /tmp/* /var/tmp/* /root/.cache/* /home/*/.cache/*; npm cache clean --force 2>/dev/null || true; cat /dev/zero > /zero.dat 2>/dev/null || true; rm -f /zero.dat; sync'" || true
 
 # 3. Apagado limpio
 echo "🛑 Apagando la máquina virtual..."
