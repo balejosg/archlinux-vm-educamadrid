@@ -43,6 +43,7 @@ while [ "$(VBoxManage showvminfo "${VM_NAME}" --machinereadable | grep '^VMState
     echo "   Esperando apagado completo..."
     sleep 3
 done
+sleep 6
 
 # 4. Exportar a OVA
 echo "💾 Exportando appliance a ${OUTPUT_OVA}..."

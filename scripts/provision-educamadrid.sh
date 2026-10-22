@@ -39,24 +39,23 @@ EOF
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 
 # 2. Desinstalar componentes innecesarios (Java, Sysadmin, Sostenibilidad, Tutor Socrático)
-echo "[2/7] Limpiando dependencias no requeridas (Java, Docker, MQTT, PowerTOP)..."
+echo "[2/7] Limpiando dependencias no requeridas (Java, Docker, MQTT, PowerTOP, Agentes antiguos)..."
 systemctl stop docker.service 2>/dev/null || true
 systemctl disable docker.service 2>/dev/null || true
 systemctl stop mosquitto.service 2>/dev/null || true
 systemctl disable mosquitto.service 2>/dev/null || true
 
 # Eliminar paquetes si están instalados (sin fallar si no existen)
-pacman -Rdd --noconfirm java-runtime-common jre-openjdk jdk-openjdk openjdk-src maven mosquitto powertop scaphandre docker docker-compose 2>/dev/null || true
-rm -rf /usr/lib/jvm
-rm -f /usr/bin/java /usr/bin/javac /usr/bin/mvn
+pacman -Rdd --noconfirm java-runtime-common jre-openjdk jdk-openjdk jdk21-openjdk jre21-openjdk openjdk-src maven mosquitto powertop scaphandre docker docker-compose antigravity-cli 2>/dev/null || true
+rm -rf /usr/lib/jvm /home/*/.gemini /root/.gemini
+rm -f /usr/bin/java /usr/bin/javac /usr/bin/mvn /usr/bin/agy
 
 # 3. Instalación de paquetes oficiales para Documentos, Imágenes y HTML
 echo "[3/7] Instalando herramientas de procesamiento de Documentos, Imágenes y HTML..."
 pacman -Sy --noconfirm --needed \
-    base-devel git curl wget rsync jq vim nano tmux zsh \
+    git curl wget rsync jq vim nano tmux zsh \
     ripgrep fd tree htop \
     nodejs npm \
-    pandoc \
     poppler \
     imagemagick optipng jpegoptim \
     graphviz \
@@ -64,6 +63,13 @@ pacman -Sy --noconfirm --needed \
     ttf-dejavu ttf-liberation noto-fonts \
     python python-pip python-virtualenv \
     python-pillow python-matplotlib python-requests
+
+# Instalar binario estático oficial de Pandoc (evita descargar 230+ paquetes Haskell / GHC)
+echo "📄 Instalando Pandoc estático oficial..."
+curl -sL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-linux-amd64.tar.gz | tar -xz -C /tmp
+mv /tmp/pandoc-3.6.4/bin/pandoc /usr/local/bin/pandoc
+chmod 755 /usr/local/bin/pandoc
+rm -rf /tmp/pandoc-3.6.4
 
 # 4. Instalación de librerías Python especializadas en Educación y Formatos
 echo "[4/7] Instalando librerías Python para DOCX, PDF, HTML y Moodle..."
