@@ -1,18 +1,28 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "version": "2.0",
-  "theme": "dark",
   "instructions": [
     "AGENTS.md"
   ],
-  "server": {
-    "host": "0.0.0.0",
-    "port": 49374
-  },
-  "permissions": {
-    "bash": "ask",
-    "file_read": "allow",
-    "file_write": "allow",
-    "web_search": "allow"
+  "commands": {
+    "unidad-html": {
+      "description": "Crear una unidad didáctica o lección en HTML para EducaMadrid (Moodle)",
+      "template": "Crea una unidad didáctica completa en HTML compatible con Moodle 4.x (EducaMadrid) usando la estructura y clases de 01-unidades-html/estilos-educamadrid.css (tarjetas, cajas de aviso, desplegables <details> y tablas adaptables). Valida el archivo resultante con 01-unidades-html/limpiar_html_moodle.py. Tema y nivel educativo: $ARGUMENTS"
+    },
+    "cuestionario-gift": {
+      "description": "Generar un banco de preguntas en formato GIFT con retroalimentación para Moodle",
+      "template": "Genera un banco de preguntas en formato GIFT en la carpeta 02-cuestionarios-moodle/ con retroalimentación didáctica en las opciones correctas e incorrectas, y valida la sintaxis ejecutando python3 02-cuestionarios-moodle/generador_gift.py. Tema, número de preguntas y nivel: $ARGUMENTS"
+    },
+    "rubrica-lomloe": {
+      "description": "Diseñar una rúbrica de evaluación LOMLOE en Markdown y Word (.docx)",
+      "template": "Diseña una rúbrica de evaluación LOMLOE tabulada con 4 niveles de logro en 03-fichas-y-tareas-docs/ y compílala automáticamente a formato Word (.docx) usando python3 03-fichas-y-tareas-docs/exportar_a_docx.py. Actividad o criterio a evaluar: $ARGUMENTS"
+    },
+    "apuntes-pdf": {
+      "description": "Crear apuntes o ficha de estudio y compilarla a PDF de alta calidad",
+      "template": "Redacta unos apuntes o guía de estudio bien estructurados y compílalos a PDF en 05-herramientas-pdf/ usando python3 05-herramientas-pdf/generar_pdf_apuntes.py. Tema o documento base: $ARGUMENTS"
+    },
+    "mapa-conceptual": {
+      "description": "Generar un mapa conceptual visual en PNG/SVG con Graphviz",
+      "template": "Crea un mapa conceptual claro y didáctico en formato DOT dentro de 04-material-multimedia/, compílalo a imagen PNG con python3 04-material-multimedia/generar_diagrama.py y optimízalo con python3 04-material-multimedia/optimizar_imagen.py. Tema del esquema: $ARGUMENTS"
+    }
   }
 }

@@ -131,12 +131,87 @@ cat << 'EOF' > /etc/sudoers.d/10-wheel-nopasswd
 EOF
 chmod 0440 /etc/sudoers.d/10-wheel-nopasswd
 
-# 7. Servicios del Sistema y Additions
-echo "[7/7] Habilitando servicios del sistema..."
+# 7. Servicios del Sistema, Gateway OpenCode y Gestor de Archivos Web
+echo "[7/7] Habilitando servicios del sistema y autoarranque de OpenCode v2..."
 pacman -S --noconfirm --needed virtualbox-guest-utils 2>/dev/null || true
 systemctl enable vboxservice.service 2>/dev/null || true
 systemctl enable sshd.service 2>/dev/null || true
 systemctl start sshd.service 2>/dev/null || true
+
+if [ -f /tmp/opencode-gateway.mjs ]; then
+    mv /tmp/opencode-gateway.mjs /usr/local/bin/opencode-gateway.mjs
+    chmod 755 /usr/local/bin/opencode-gateway.mjs
+fi
+
+if [ -f /tmp/educamadrid-files.py ]; then
+    mv /tmp/educamadrid-files.py /usr/local/bin/educamadrid-files.py
+    chmod 755 /usr/local/bin/educamadrid-files.py
+fi
+
+su - docente -c "opencode service set hostname 127.0.0.1 && opencode service set port 49375 && opencode service set password educamadrid"
+
+cat << 'EOF' > /etc/systemd/system/opencode.service
+[Unit]
+Description=OpenCode v2 Managed Background Service (EducaMadrid)
+After=network.target
+
+[Service]
+Type=simple
+User=docente
+Group=docente
+WorkingDirectory=/home/docente/trabajo
+Environment="HOME=/home/docente"
+Environment="PATH=/home/docente/.local/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="OPENCODE_SERVER_PASSWORD=educamadrid"
+ExecStart=/usr/bin/opencode serve --service --hostname 127.0.0.1 --port 49375
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+cat << 'EOF' > /etc/systemd/system/opencode-gateway.service
+[Unit]
+Description=OpenCode v2 Gateway & Preconfiguracion Docente (Puerto 49374)
+After=network.target opencode.service
+Requires=opencode.service
+
+[Service]
+Type=simple
+User=docente
+Group=docente
+WorkingDirectory=/home/docente/trabajo
+ExecStart=/usr/bin/node /usr/local/bin/opencode-gateway.mjs
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+cat << 'EOF' > /etc/systemd/system/educamadrid-web.service
+[Unit]
+Description=Portal Web de Archivos y Vista Previa Docente EducaMadrid (Puerto 80)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/docente/trabajo
+ExecStart=/usr/bin/python3 /usr/local/bin/educamadrid-files.py 80
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable opencode.service opencode-gateway.service educamadrid-web.service
+systemctl restart opencode.service
+sleep 2
+systemctl restart opencode-gateway.service educamadrid-web.service
 
 echo "======================================================================"
 echo "✅ APROVISIONAMIENTO EDUCAMADRID COMPLETADO CON ÉXITO"

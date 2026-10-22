@@ -97,6 +97,8 @@ SSH_ASKPASS=/tmp/askpass_alumno.sh SSH_ASKPASS_REQUIRE=force setsid -w scp -P 22
     "${PROJECT_DIR}/config/AGENTS.md" \
     "${PROJECT_DIR}/config/opencode.json" \
     "${PROJECT_DIR}/config/LEEME_DOCENTE.md" \
+    "${PROJECT_DIR}/config/opencode-gateway.mjs" \
+    "${PROJECT_DIR}/config/educamadrid-files.py" \
     "${PROJECT_DIR}/plantillas-educamadrid" \
     "${PROJECT_DIR}/scripts/provision-educamadrid.sh" \
     alumno@127.0.0.1:/tmp/

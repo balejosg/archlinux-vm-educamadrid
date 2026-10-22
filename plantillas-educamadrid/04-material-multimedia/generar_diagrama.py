@@ -3,20 +3,30 @@
 generar_diagrama.py
 ===================
 Compilador de mapas conceptuales y esquemas visuales para EducaMadrid.
-Convierte código Graphviz DOT o diagramas Mermaid a imágenes PNG y SVG nítidas.
+Convierte código Graphviz DOT a imágenes PNG y SVG nítidas.
 """
 
 import sys
 import os
 import subprocess
 
-def compilar_dot(dot_path: str, formato: str = "png") -> bool:
+FORMATOS_VALIDOS = {"png", "svg", "pdf", "jpg", "jpeg", "webp"}
+
+def compilar_dot(dot_path: str, segundo_arg: str = "png") -> bool:
     if not os.path.isfile(dot_path):
         print(f"❌ Error: El archivo '{dot_path}' no existe.")
         return False
 
     base, _ = os.path.splitext(dot_path)
-    salida = f"{base}.{formato}"
+    if segundo_arg.lower() in FORMATOS_VALIDOS:
+        formato = segundo_arg.lower()
+        salida = f"{base}.{formato}"
+    else:
+        salida = segundo_arg
+        _, ext = os.path.splitext(salida)
+        formato = ext.lstrip(".").lower() if ext else "png"
+        if formato not in FORMATOS_VALIDOS:
+            formato = "png"
 
     cmd = ["dot", f"-T{formato}", dot_path, "-o", salida]
     try:
@@ -32,8 +42,9 @@ def compilar_dot(dot_path: str, formato: str = "png") -> bool:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python3 generar_diagrama.py <archivo.dot> [formato: png|svg]")
+        print("Uso: python3 generar_diagrama.py <archivo.dot> [salida.png | png | svg]")
         sys.exit(1)
     archivo = sys.argv[1]
-    fmt = sys.argv[2] if len(sys.argv) > 2 else "png"
-    compilar_dot(archivo, fmt)
+    arg2 = sys.argv[2] if len(sys.argv) > 2 else "png"
+    if not compilar_dot(archivo, arg2):
+        sys.exit(1)

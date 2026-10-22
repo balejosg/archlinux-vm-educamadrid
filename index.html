@@ -91,7 +91,7 @@
           <span class="inline-flex items-center gap-1.5"><span class="text-cyan-400">●</span> Conexión: <strong>100% Automática (1 Clic)</strong></span>
         </div>
         <div class="font-mono text-[11px] text-slate-500 break-all bg-slate-900/80 px-3 py-1 rounded border border-slate-800">
-          SHA-256 (OVA.ZIP): 10d2c7d4ea246b2f05bd66ffb1932f74079124dd173e550ebb5e9d8d9cc8f061
+          SHA-256 (OVA.ZIP): b39f04c32821254a341afa1a29f88bdd47e67e0cb9e9200a5927230373157d2d
         </div>
       </div>
     </div>
@@ -133,11 +133,43 @@
         <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col gap-2">
           <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
             <span class="w-6 h-6 rounded-full bg-amber-950/80 border border-amber-700 flex items-center justify-center text-xs">3</span>
-            ¡Genera Contenido Educativo!
+            ¡Genera y Descarga tu Material!
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Se abre una ventana de aplicación dedicada e independiente (modo app sin barras de navegador) lista para crear lecciones, GIFT y PDFs.
+            La app se abre directamente en español sobre <code>~/trabajo</code> con un botón flotante <strong>📂 Archivos ~/trabajo</strong> para subir PDFs, previsualizar HTML y descargar tus documentos a Windows.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comandos Rápidos para Docentes -->
+    <section class="mt-8 bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+      <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span>⌨️</span> Comandos Rápidos Integrados en OpenCode v2
+        </h3>
+        <span class="text-xs text-rose-300 bg-rose-950/80 border border-rose-800/60 px-2.5 py-0.5 rounded-full">Listos para usar en el chat</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 text-xs">
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
+          <code class="text-rose-400 font-bold block mb-1">/unidad-html</code>
+          <span class="text-slate-400">Crea y valida una unidad HTML para Moodle</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
+          <code class="text-amber-400 font-bold block mb-1">/cuestionario-gift</code>
+          <span class="text-slate-400">Genera y verifica preguntas GIFT con feedback</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
+          <code class="text-cyan-400 font-bold block mb-1">/rubrica-lomloe</code>
+          <span class="text-slate-400">Diseña rúbrica de 4 niveles y exporta a DOCX</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
+          <code class="text-purple-400 font-bold block mb-1">/apuntes-pdf</code>
+          <span class="text-slate-400">Redacta apuntes y los compila en PDF</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
+          <code class="text-emerald-400 font-bold block mb-1">/mapa-conceptual</code>
+          <span class="text-slate-400">Genera esquemas visuales en PNG y SVG</span>
         </div>
       </div>
     </section>
@@ -244,12 +276,12 @@
             <tr>
               <td class="py-3 px-4 font-medium text-white">Servidor OpenCode v2 Web</td>
               <td class="py-3 px-4 font-mono text-amber-400">49374 ➔ 49374</td>
-              <td class="py-3 px-4 text-xs">Interfaz web accesible desde el navegador del host</td>
+              <td class="py-3 px-4 text-xs">Pasarela autenticada en español sobre <code>~/trabajo</code> (<code>http://localhost:49374</code>)</td>
             </tr>
             <tr>
-              <td class="py-3 px-4 font-medium text-white">Vista Previa Web</td>
+              <td class="py-3 px-4 font-medium text-white">Gestor de Archivos y Vista Previa</td>
               <td class="py-3 px-4 font-mono text-emerald-400">8080 ➔ 80</td>
-              <td class="py-3 px-4 text-xs">Servidor para previsualizar HTML antes de subirlo a Moodle</td>
+              <td class="py-3 px-4 text-xs">Subida de PDFs, descarga de DOCX/GIFT y vista previa HTML (<code>http://localhost:8080</code>)</td>
             </tr>
             <tr>
               <td class="py-3 px-4 font-medium text-white">Carpeta Compartida</td>

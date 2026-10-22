@@ -87,16 +87,16 @@ type MSG struct {
 	LPrivate uint32
 }
 
-const targetURL = "http://127.0.0.1:49374/?auth_token=educamadrid"
+const targetURL = "http://127.0.0.1:49374/?auth_token=b3BlbmNvZGU6ZWR1Y2FtYWRyaWQ"
 
 func checkOpenCode() bool {
 	client := http.Client{Timeout: 1200 * time.Millisecond}
-	resp, err := client.Get("http://127.0.0.1:49374/")
+	resp, err := client.Get("http://127.0.0.1:49374/api/info")
 	if err != nil {
 		return false
 	}
 	_ = resp.Body.Close()
-	return resp.StatusCode == 200 || resp.StatusCode == 401
+	return resp.StatusCode == 200
 }
 
 func MessageBox(title, text string, style uint) int {

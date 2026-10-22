@@ -154,27 +154,34 @@
       </div>
     </section>
 
-    <!-- 5. Cliente GUI Portable Windows -->
+    <!-- 5. Cliente GUI Portable Windows y Arquitectura Zero-Touch -->
     <section class="space-y-4">
       <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
-        <span class="text-emerald-400">05.</span> Cliente GUI Portable para Windows y Conexión Automática
+        <span class="text-emerald-400">05.</span> Cliente GUI Portable Windows, Pasarela Inteligente y Gestor Web
       </h3>
       <p class="text-sm text-slate-300 leading-relaxed">
-        Para que el profesorado no tenga que abrir una consola SSH ni interactuar con la línea de comandos de Linux, se ha desarrollado una solución de escritorio <strong>100% portable y transparente</strong>:
+        Para que el profesorado no tenga que abrir una consola SSH ni interactuar con la línea de comandos de Linux, se ha diseñado una arquitectura <strong>Zero-Touch de 3 capas</strong>:
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <h4 class="font-bold text-emerald-400 text-sm">⚙️ Servicio Systemd en la Máquina Virtual</h4>
+          <h4 class="font-bold text-emerald-400 text-sm">⚙️ Demonio Compartido (49375)</h4>
           <p class="text-slate-300 leading-relaxed">
-            Se ha creado y habilitado el servicio <code>opencode.service</code> en <code>/etc/systemd/system/</code>. Al encender la máquina virtual, OpenCode v2 inicia automáticamente en segundo plano escuchando en el puerto <code>49374</code>, asociado al usuario <code>docente</code> y autenticado con un token interno preconfigurado.
+            El servicio <code>opencode.service</code> ejecuta <code>opencode serve --service</code> en <code>127.0.0.1:49375</code>. Esto permite que tanto la interfaz gráfica Windows como las sesiones por terminal (<code>opencode</code>) compartan el mismo proceso y estado sin conflictos de puerto.
           </p>
         </div>
 
         <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <h4 class="font-bold text-teal-400 text-sm">🪟 Aplicación Nativa Windows (Go + Win32)</h4>
+          <h4 class="font-bold text-amber-400 text-sm">🛡️ Pasarela Docente (49374)</h4>
           <p class="text-slate-300 leading-relaxed">
-            El ejecutable <code>OpenCode-EducaMadrid.exe</code> es un binario independiente de 5.2 MB sin instalador. Incluye recursos de versión y un icono multi-resolución. Al ejecutarse, detecta automáticamente la máquina virtual, muestra una ventana de espera si la VM está iniciando, y abre una ventana de aplicación dedicada (modo <code>--app</code> con Edge o Chrome) con perfil aislado.
+            El servicio <code>opencode-gateway.service</code> en <code>0.0.0.0:49374</code> inyecta automáticamente cabeceras <code>Authorization: Basic</code> en HTTP y WebSockets, preconfigura la interfaz en <strong>español</strong>, abre por defecto <code>/home/docente/trabajo</code> e inserta el botón flotante <strong>📂 Archivos ~/trabajo</strong>.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <h4 class="font-bold text-teal-400 text-sm">🪟 App Windows + Gestor Web (8080)</h4>
+          <p class="text-slate-300 leading-relaxed">
+            <code>OpenCode-EducaMadrid.exe</code> (Go + Win32) verifica <code>/api/info</code>, autentica con token Base64URL y lanza el modo <code>--app</code> aislado. Además, <code>educamadrid-web.service</code> en <code>http://localhost:8080</code> permite subir PDFs y descargar o previsualizar unidades HTML con un clic.
           </p>
         </div>
       </div>

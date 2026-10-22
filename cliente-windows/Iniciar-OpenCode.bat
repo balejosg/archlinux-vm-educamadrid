@@ -20,7 +20,7 @@ if exist "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" set "EDGE_E
 if not defined EDGE_EXE if exist "%ProgramFiles%\Microsoft\Edge\Application\msedge.exe" set "EDGE_EXE=%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"
 if not defined EDGE_EXE if exist "%LocalAppData%\Microsoft\Edge\Application\msedge.exe" set "EDGE_EXE=%LocalAppData%\Microsoft\Edge\Application\msedge.exe"
 
-set "TARGET_URL=http://127.0.0.1:49374/?auth_token=educamadrid"
+set "TARGET_URL=http://127.0.0.1:49374/?auth_token=b3BlbmNvZGU6ZWR1Y2FtYWRyaWQ"
 set "USER_DIR=%LocalAppData%\OpenCodeEducaMadrid\profile"
 
 if defined EDGE_EXE (

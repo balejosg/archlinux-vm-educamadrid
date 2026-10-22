@@ -12,8 +12,8 @@ Su propósito fundamental es proporcionar un entorno ágil, potente y automatiza
 * 📖 **Caso de Estudio Técnico**: [https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html](https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html)
 * 💻 **Cliente GUI Portable Windows (1 Clic)**: [OpenCode-EducaMadrid-GUI-Windows.zip](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/OpenCode-EducaMadrid-GUI-Windows.zip) (2.3 MB)
 * 📦 **Máquina Virtual OVA (.zip, 1.73 GB)**: [ArchLinux-EducaMadrid.ova.zip (v1.0.0)](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/ArchLinux-EducaMadrid.ova.zip)
-* 🔒 **SHA-256 (OVA.ZIP)**: `10d2c7d4ea246b2f05bd66ffb1932f74079124dd173e550ebb5e9d8d9cc8f061`
-* 🔒 **SHA-256 (GUI Portable ZIP)**: `0f7caaa53db131ac743e4aaa6ad8f50c6596689e8a7f5df8454621b686022a3c`
+* 🔒 **SHA-256 (OVA.ZIP)**: `b39f04c32821254a341afa1a29f88bdd47e67e0cb9e9200a5927230373157d2d`
+* 🔒 **SHA-256 (GUI Portable ZIP)**: `b8077eda8e58613b9a0ea76ffb76c8d425eeca41f3bd0bfc95b574c1b0d1b099`
 
 ---
 
@@ -63,8 +63,19 @@ A diferencia de las máquinas virtuales dirigidas a estudiantes de programación
 | **Permisos de Administrador** | Acceso `sudo` sin contraseña |
 | **Reenvío SSH** | Puerto anfitrión `2222` ➔ Puerto VM `22` (`ssh -p 2222 docente@localhost`) |
 | **Servidor Web OpenCode v2** | Puerto anfitrión `49374` ➔ Puerto VM `49374` (`http://localhost:49374`) |
-| **Previsualización Web** | Puerto anfitrión `8080` ➔ Puerto VM `80` |
+| **Gestor de Archivos y Vista Previa** | Puerto anfitrión `8080` ➔ Puerto VM `80` (`http://localhost:8080`) |
 | **Carpeta Compartida Host** | Preconfigurada en `/home/docente/trabajo` |
+
+---
+
+## ⌨️ Comandos Rápidos Docentes en OpenCode v2
+
+OpenCode v2 incluye atajos específicos preconfigurados en `~/trabajo/opencode.json`:
+* `/unidad-html`: Diseña y valida una lección HTML lista para incrustar en Moodle.
+* `/cuestionario-gift`: Genera y comprueba preguntas tipo test/V-F en formato GIFT con justificación.
+* `/rubrica-lomloe`: Crea una matriz de evaluación de 4 niveles por criterios LOMLOE y la compila en DOCX.
+* `/apuntes-pdf`: Redacta material teórico y genera un PDF maquetado de alta resolución.
+* `/mapa-conceptual`: Diseña diagramas conceptuales con Graphviz en formato PNG y SVG.
 
 ---
 

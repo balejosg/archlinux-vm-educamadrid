@@ -1,71 +1,48 @@
 # 🏫 Bienvenido al Entorno de Creación de Contenidos EducaMadrid
 
-Esta máquina virtual está diseñada para facilitar a los **docentes de la Comunidad de Madrid** la creación, adaptación y formateo de materiales educativos para sus **Aulas Virtuales (Moodle 4.x)**.
+Esta máquina virtual está diseñada para facilitar a los **docentes de la Comunidad de Madrid** la creación, adaptación y formateo de materiales educativos para sus **Aulas Virtuales (Moodle 4.x)** mediante **OpenCode v2**.
 
 ---
 
-## 🚀 Inicio Rápido con OpenCode v2
+## ⚡ Conexión 1 Clic desde Windows (Sin usar la consola)
 
-El único agente de IA preinstalado en este sistema es **OpenCode v2**.
+El sistema arranca automáticamente todos los servicios en segundo plano al encender la máquina virtual en VirtualBox:
 
-Para iniciar una sesión de trabajo con el asistente de creación de contenidos:
+1. **Interfaz Gráfica de OpenCode v2 (`http://localhost:49374`)**:
+   * Ejecuta `OpenCode-EducaMadrid.exe` (o `Iniciar-OpenCode.bat`) en tu Windows.
+   * Se abre en modo ventana de aplicación dedicada, en español y directamente situada en tu carpeta `~/trabajo`.
+2. **Gestor de Archivos y Vista Previa Web (`http://localhost:8080`)**:
+   * Haz clic en el botón rojo **`📂 Archivos ~/trabajo`** (esquina inferior derecha de OpenCode) o abre `http://localhost:8080`.
+   * Permite **subir PDFs, documentos Word o imágenes** desde tu Windows a `~/trabajo`, **previsualizar lecciones HTML** en vivo y **descargar con 1 clic** (`.docx`, `.pdf`, `.gift`, `.html`, `.zip`) los recursos creados por el agente.
+3. **Uso desde terminal (opcional)**:
+   * Si prefieres la consola: `cd ~/trabajo && opencode` (se conecta al mismo servicio activo sin conflictos).
 
-```bash
-cd ~/trabajo
-opencode
-```
+---
 
-O si prefieres utilizar el modo servidor web de OpenCode v2 para trabajar desde el navegador de tu ordenador anfitrión:
-```bash
-opencode serve --port 49374
-```
-*(Luego abre en tu navegador del equipo anfitrión: `http://localhost:49374`)*
+## 🪄 Comandos Rápidos (`/`) Preconfigurados en OpenCode
+
+Escribe `/` en el cuadro de diálogo de OpenCode para usar las plantillas pedagógicas integradas:
+
+* **`/unidad-html <tema y curso>`**: Crea una lección HTML completa con estilos de EducaMadrid y la valida para Moodle.
+* **`/cuestionario-gift <tema y nº preguntas>`**: Genera un banco de preguntas GIFT con retroalimentación y verifica su sintaxis.
+* **`/rubrica-lomloe <actividad o criterio>`**: Diseña una rúbrica LOMLOE tabulada y la exporta automáticamente a Word (`.docx`).
+* **`/apuntes-pdf <tema>`**: Redacta apuntes o fichas de estudio y los compila a PDF de alta calidad con Weasyprint.
+* **`/mapa-conceptual <tema>`**: Genera un esquema conceptual con Graphviz (`.png`) y lo optimiza para el Aula Virtual.
 
 ---
 
 ## 🗂️ Estructura de Trabajo (`~/trabajo`)
 
-En tu carpeta de trabajo encontrarás plantillas y utilidades listas para usar:
-
-* **`01-unidades-html/`**:
-  * Plantillas de temas y lecciones en HTML con estilos adaptables compatibles con EducaMadrid.
-  * `limpiar_html_moodle.py`: Script para limpiar HTML y garantizar compatibilidad con Moodle.
-* **`02-cuestionarios-moodle/`**:
-  * Bancos de preguntas en formato **GIFT** y **Moodle XML**.
-  * `generador_gift.py`: Convierte tablas o listas de texto en preguntas tipo test listas para importar.
-* **`03-fichas-y-tareas-docs/`**:
-  * Modelos de guías docentes, enunciados de actividades y rúbricas de evaluación LOMLOE.
-  * `exportar_a_docx.py`: Compilador rápido de Markdown a `.docx`.
-* **`04-material-multimedia/`**:
-  * Herramientas de optimización web de imágenes (`optimizar_imagen.py`).
-  * Generación de mapas conceptuales y diagramas con Graphviz.
-* **`05-herramientas-pdf/`**:
-  * `extractor_texto_pdf.py`: Extrae texto y tablas de libros o temarios en PDF para que el agente trabaje con ellos.
-  * Compilador de resúmenes y apuntes a PDF de alta resolución.
-
----
-
-## 💡 Ejemplos de Peticiones para OpenCode v2
-
-Pega directamente peticiones como estas en OpenCode:
-
-1. **Crear una unidad didáctica en HTML**:
-   > *"Crea una página HTML con el tema 'El ciclo del agua' para 1º de la ESO, usando cajas de aviso para conceptos clave, un desplegable con un ejercicio interactivo y una tabla resumen. Usa los estilos de `estilos-educamadrid.css`."*
-
-2. **Generar un cuestionario para el Aula Virtual**:
-   > *"A partir del archivo `apuntes.pdf` de la carpeta `05-herramientas-pdf`, genera un banco de 10 preguntas tipo test en formato GIFT con 4 opciones (1 correcta) y explicaciones en las retroalimentaciones. Guárdalo en `02-cuestionarios-moodle/examen_tema1.gift`."*
-
-3. **Diseñar una rúbrica en Word (.docx)**:
-   > *"Elabora una rúbrica de evaluación para una exposición oral de 4º de ESO con 4 niveles de desempeño (Insuficiente, Suficiente, Notable, Sobresaliente) según los criterios de comunicación lingüística. Guárdala como documento DOCX en `03-fichas-y-tareas-docs/`."*
-
-4. **Optimizar imágenes para no saturar la cuota**:
-   > *"Optimiza todas las imágenes de la carpeta `04-material-multimedia/` para que pesen menos de 300 KB y se vean nítidas en Moodle."*
+* **`01-unidades-html/`**: Plantillas de lecciones HTML, `estilos-educamadrid.css` y validador `limpiar_html_moodle.py`.
+* **`02-cuestionarios-moodle/`**: Bancos de preguntas en formato **GIFT** y **Moodle XML**, y validador `generador_gift.py`.
+* **`03-fichas-y-tareas-docs/`**: Guías docentes, rúbricas LOMLOE y conversor `exportar_a_docx.py`.
+* **`04-material-multimedia/`**: Compilador de esquemas Graphviz (`generar_diagrama.py`) y compresor (`optimizar_imagen.py`).
+* **`05-herramientas-pdf/`**: Extractor de currículos/libros en PDF (`extractor_texto_pdf.py`) y compilador (`generar_pdf_apuntes.py`).
 
 ---
 
 ## 🔒 Credenciales del Sistema
 
-* **Usuario**: `docente` (o `alumno`)
-* **Contraseña**: `docente` (o `alumno`)
-* **Permisos**: Administrador con `sudo`
-* **Acceso SSH desde el anfitrión**: `ssh -p 2222 docente@localhost`
+* **Usuario**: `docente` (o `alumno`) | **Contraseña**: `docente` (o `alumno`)
+* **Permisos**: Administrador con `sudo` sin contraseña
+* **Puertos (NAT)**: `49374` (OpenCode GUI), `8080 ➔ 80` (Gestor de Archivos y Vista Previa), `2222 ➔ 22` (SSH)
