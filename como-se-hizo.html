@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caso de Estudio: Creación de la VM para Docentes de EducaMadrid con OpenCode v2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'Fira Code', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-rose-600 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-red-600 to-amber-500 flex items-center justify-center font-bold text-white shadow-lg shadow-rose-600/20 group-hover:scale-105 transition">
+          🏫
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-lg leading-tight text-white group-hover:text-rose-300 transition">Arch Linux VM</h1>
+            <span class="text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800/80 px-2 py-0.5 rounded-full">EducaMadrid Docentes</span>
+          </div>
+          <p class="text-xs text-rose-400 font-medium">Caso de Estudio Técnico • Arquitectura OpenCode v2</p>
+        </div>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white transition">
+          ← Volver a Descargas
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-6 py-12 space-y-10">
+
+    <div class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-950/60 border border-rose-800/60 text-rose-300 text-xs font-medium">
+        <span>🛠️</span> Documentación Técnica y Proceso de Ingeniería
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        ¿Cómo se construyó la máquina virtual con OpenCode v2 para EducaMadrid?
+      </h2>
+      <p class="text-slate-300 text-base leading-relaxed">
+        Este documento desglosa las decisiones de diseño, la transformación del sistema base, la depuración de dependencias y la configuración de herramientas multiformato orientadas a la docencia.
+      </p>
+    </div>
+
+    <!-- 1. Los Requisitos y el Cambio de Paradigma -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+        <span class="text-rose-400">01.</span> Del Entorno de Alumno al Entorno de Docente
+      </h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Las máquinas virtuales pedagógicas tradicionales suelen construirse pensando en el alumno (con compiladores de Java y tutores que guían mediante preguntas socráticas). Para un **docente**, este planteamiento resulta contraproducente: el profesor necesita una herramienta de **alta productividad**, que genere materiales completos y listos para publicar en el **Aula Virtual (Moodle 4.x)** de EducaMadrid.
+      </p>
+      
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-red-400 font-bold">❌ Eliminado:</span>
+          <span class="text-slate-300">Toolchain de Java (OpenJDK 21, Maven), IntelliJ IDEA, contenedores Docker, brokers MQTT Mosquitto, herramientas de métricas energéticas (PowerTOP, Scaphandre) y tutor socrático.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold">✅ Incorporado:</span>
+          <span class="text-slate-300">OpenCode v2 (único agente), procesamiento integral de PDFs, conversión y maquetación DOCX con Pandoc y LibreOffice headless, compresión web de imágenes con ImageMagick y OptiPNG, generadores de cuestionarios GIFT y plantillas HTML accesibles (DUA).</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Arquitectura de OpenCode v2 -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+        <span class="text-amber-400">02.</span> Integración de OpenCode v2 como Único Agente
+      </h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        OpenCode v2 introduce una arquitectura cliente-servidor con un demonio de fondo que sincroniza el trabajo tanto en la terminal interactiva como a través de su interfaz web:
+      </p>
+      
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-300 space-y-2">
+        <p class="text-slate-400">// Modo 1: Consola interactiva para el profesor</p>
+        <p class="text-amber-400">cd ~/trabajo && opencode</p>
+        <p class="text-slate-400 pt-2">// Modo 2: Servidor web accesible desde el navegador del host</p>
+        <p class="text-amber-400">opencode serve --port 49374</p>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Gracias al reenvío de puertos NAT configurado en VirtualBox (<code>49374 ➔ 49374</code>), el profesor puede interactuar con el agente cómodamente desde su navegador habitual en <code>http://localhost:49374</code> mientras la máquina corre en segundo plano.
+      </p>
+    </section>
+
+    <!-- 3. Toolchain Multiformato -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+        <span class="text-cyan-400">03.</span> El Toolchain Multiformato
+      </h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <h4 class="font-bold text-rose-400 mb-1">📄 Procesamiento de PDFs</h4>
+          <p class="text-slate-300">
+            <code>pdfplumber</code>, <code>pypdf</code> y <code>poppler</code> para extraer texto de decretos curriculares oficiales y libros de texto. <code>weasyprint</code> para compilar apuntes a PDF de alta resolución.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <h4 class="font-bold text-amber-400 mb-1">📝 Documentos DOCX</h4>
+          <p class="text-slate-300">
+            <code>pandoc</code> y <code>python-docx</code> para generar y estructurar guías didácticas, rúbricas de evaluación y fichas de ejercicios directamente en formato Word.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <h4 class="font-bold text-emerald-400 mb-1">🖼️ Imágenes y Diagramas</h4>
+          <p class="text-slate-300">
+            <code>imagemagick</code> y <code>optipng</code> para optimizar fotografías a tamaños web (&lt;350 KB). <code>graphviz</code> (dot) para trazar mapas conceptuales y esquemas de contenido.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <h4 class="font-bold text-cyan-400 mb-1">🌐 HTML para Moodle</h4>
+          <p class="text-slate-300">
+            Estilos responsivos diseñados para el tema de EducaMadrid con tarjetas, acordeones desplegables y validador de código seguro libre de scripts no admitidos por el LMS.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Instrucciones de Reproducción -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+        <span class="text-purple-400">04.</span> Reproducción Automatizada en Cualquier Entorno
+      </h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Todo el proceso de aprovisionamiento está codificado en scripts bash reproducibles en el repositorio oficial:
+      </p>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-300 space-y-3">
+        <p class="text-slate-400"># 1. Clonar el repositorio de construcción</p>
+        <p class="text-purple-300">git clone https://github.com/balejosg/archlinux-vm-educamadrid.git</p>
+        <p class="text-purple-300">cd archlinux-vm-educamadrid</p>
+        
+        <p class="text-slate-400 pt-2"># 2. Construir e importar la máquina en VirtualBox</p>
+        <p class="text-purple-300">bash scripts/crear-vm-educamadrid.sh</p>
+        
+        <p class="text-slate-400 pt-2"># 3. Exportar el appliance comprimido .ova</p>
+        <p class="text-purple-300">bash scripts/exportar-ova.sh</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 mt-16 py-8 text-center text-xs text-slate-500">
+    <p>Arch Linux VM (Edición Docente EducaMadrid) • Documentación Técnica</p>
+  </footer>
+
+</body>
+</html>

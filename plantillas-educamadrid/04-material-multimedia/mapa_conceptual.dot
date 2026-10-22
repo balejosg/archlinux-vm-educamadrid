@@ -1,0 +1,27 @@
+digraph MapaConceptual {
+  // Configuración general del mapa conceptual
+  rankdir=TB;
+  node [fontname="Arial", shape=box, style="filled,rounded", color="#003366", fontcolor="#1e293b", fillcolor="#f0f9ff", penwidth=1.5];
+  edge [fontname="Arial", fontsize=10, color="#64748b", arrowhead=vee];
+
+  // Nodos de contenido didáctico
+  Raiz [label="Ecosistemas", fillcolor="#003366", fontcolor="#ffffff", shape=rect, style="filled,rounded", penwidth=2];
+  
+  Biotopo [label="Biotopo\n(Medio físico y condiciones)"];
+  Biocenosis [label="Biocenosis\n(Seres vivos / Comunidad)"];
+  
+  FactoresAbioticos [label="Factores Abióticos\n(Luz, Temperatura, Agua, Suelo)"];
+  Relaciones [label="Relaciones Ecológicas\n(Intraespecíficas e Interespecíficas)"];
+  
+  FlujoEnergia [label="Flujo de Energía\n(Redes Tróficas y Ciclos de Materia)", fillcolor="#fef2f2", color="#c00020"];
+
+  // Conexiones jerárquicas
+  Raiz -> Biotopo [label="formado por"];
+  Raiz -> Biocenosis [label="formado por"];
+  
+  Biotopo -> FactoresAbioticos [label="determinado por"];
+  Biocenosis -> Relaciones [label="interactúan en"];
+  
+  FactoresAbioticos -> FlujoEnergia [style=dashed, label="influyen en"];
+  Relaciones -> FlujoEnergia [label="sostienen el"];
+}

@@ -1,0 +1,50 @@
+// =============================================================================
+// BANCO DE PREGUNTAS EN FORMATO GIFT PARA AULA VIRTUAL EDUCAMADRID (MOODLE)
+// =============================================================================
+// Instrucciones de importación en Moodle:
+// 1. Ve a tu curso ➡️ Banco de Preguntas ➡️ Importar
+// 2. Selecciona "Formato GIFT"
+// 3. Arrastra este archivo y pulsa "Importar"
+// =============================================================================
+
+$CATEGORY: $course$/Tema 1: Fundamentos y Metodología Didáctica
+
+// 1. Pregunta de Opción Múltiple (1 respuesta correcta)
+::P01_Metodologia_Activa:: ¿Cuál de las siguientes metodologías se basa principalmente en la resolución colaborativa de retos del mundo real? {
+  =Aprendizaje Basado en Proyectos (ABP) # ¡Correcto! El ABP sitúa al alumnado ante un reto real y cooperativo.
+  ~Clase magistral tradicional # Incorrecto: en la clase magistral el alumno tiene un rol mayoritariamente pasivo.
+  ~Instrucción memorística individual # Incorrecto: no fomenta el trabajo en equipo ni la investigación práctica.
+  ~Evaluación sumativa puntual # Incorrecto: la evaluación no es una metodología didáctica de aprendizaje.
+}
+
+// 2. Pregunta de Opción Múltiple con Varias Respuestas Correctas (% ponderado)
+::P02_Principios_DUA:: ¿Cuáles de los siguientes son principios fundamentales del Diseño Universal para el Aprendizaje (DUA)? {
+  ~%50%Proporcionar múltiples formas de implicación # ¡Correcto! Es el principio afectivo del DUA.
+  ~%50%Proporcionar múltiples formas de representación # ¡Correcto! Es el principio de percepción y comprensión.
+  ~%-50%Exigir el mismo formato único de examen para todo el alumnado # Incorrecto: el DUA promueve la flexibilidad en la evaluación.
+  ~%-50%Eliminar todos los criterios de evaluación curriculares # Incorrecto: el currículo se mantiene, cambian las vías de acceso.
+}
+
+// 3. Pregunta de Verdadero / Falso
+::P03_Evaluacion_Formativa:: La evaluación formativa tiene como finalidad principal orientar y regular el proceso de aprendizaje del estudiante durante el curso, y no limitarse a calificar al final. {TRUE#¡Exacto! Permite detectar dificultades a tiempo y ofrecer feedback útil.#Incorrecto: esa es precisamente la definición de evaluación formativa.}
+
+// 4. Pregunta de Emparejamiento (Matching)
+::P04_Emparejamiento_Conceptos:: Relaciona cada elemento curricular con su función: {
+  =Competencia específica -> Desempeño que el alumnado debe poder desplegar en situaciones de aprendizaje.
+  =Criterio de evaluación -> Referente que indica el nivel de desempeño esperado.
+  =Saber básico -> Conocimientos, destrezas y actitudes propios de la materia.
+  =Situación de aprendizaje -> Contexto o escenario pedagógico donde se aplica lo aprendido.
+}
+
+// 5. Pregunta de Respuesta Corta
+::P05_Plataforma_Educamadrid:: ¿Cuál es el sistema de gestión del aprendizaje (LMS) de código abierto en el que se basan las Aulas Virtuales de EducaMadrid? {
+  =Moodle
+  =moodle
+  =MOODLE
+}
+
+// 6. Pregunta Numérica con Rango de Error
+::P06_Calculo_Ponderacion:: Si una tarea tiene un peso del 30% sobre una nota final de 10 puntos, ¿cuántos puntos como máximo aporta esta tarea a la calificación global? {#3:0.1}
+
+// 7. Pregunta de Desarrollo (Ensayo)
+::P07_Reflexion_Pedagogica:: Diseña una breve actividad de 15 minutos para iniciar una clase de tu materia, indicando los saberes previos que activa y la pregunta detonante. {}

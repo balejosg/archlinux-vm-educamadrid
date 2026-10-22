@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cuestionario en Formato Moodle XML para Aula Virtual EducaMadrid -->
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/Exámenes/Unidad 1</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Banco de preguntas evaluables de la Unidad 1</p>]]></text>
+    </info>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Pregunta 1: Definición de Recurso Educativo Abierto</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>¿Qué característica define primordialmente a un <strong>Recurso Educativo Abierto (REA)</strong>?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Los REA son materiales de enseñanza bajo licencias libres (como Creative Commons) que permiten reutilizar, adaptar y redistribuir el material.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Estar publicado con licencias abiertas que permiten su uso, adaptación y redistribución gratuita.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>¡Correcto! Cumple con los principios de las licencias abiertas.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ser accesible solo mediante suscripción de pago institucional.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrecto: eso describe un recurso propietario bajo muro de pago.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Estar almacenado en formato papel exclusivamente.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrecto: los REA son recursos digitales abiertos.</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

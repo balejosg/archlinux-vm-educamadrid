@@ -1,0 +1,172 @@
+/* ==========================================================================
+   ESTILOS EDUCAMADRID - COMPONENTES PARA AULA VIRTUAL (MOODLE)
+   Diseñado para accesibilidad (DUA), diseño responsivo y legibilidad
+   ========================================================================== */
+
+:root {
+  --color-primario: #003366;     /* Azul institucional */
+  --color-secundario: #c00020;   /* Carmesí Madrid */
+  --color-acento: #0284c7;       /* Azul cielo / enlaces */
+  --color-fondo-suave: #f8fafc;  /* Fondo tarjetas */
+  --color-texto: #1e293b;        /* Gris oscuro alta legibilidad */
+  --color-borde: #e2e8f0;
+  --radio-borde: 8px;
+}
+
+body, .contenido-educamadrid {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-texto);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* Encabezados y Jerarquía Didáctica */
+.contenido-educamadrid h1 {
+  color: var(--color-primario);
+  border-bottom: 3px solid var(--color-secundario);
+  padding-bottom: 0.5rem;
+  font-size: 1.85rem;
+  margin-top: 1rem;
+}
+
+.contenido-educamadrid h2 {
+  color: var(--color-primario);
+  font-size: 1.45rem;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-educamadrid h3 {
+  color: #334155;
+  font-size: 1.15rem;
+}
+
+/* Badges y Etiquetas Curriculares (LOMLOE) */
+.badge-curricular {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-right: 0.35rem;
+}
+
+/* Cajas de Aviso Didácticas (Callouts) */
+.caja-didactica {
+  border-left: 4px solid;
+  border-radius: 0 var(--radio-borde) var(--radio-borde) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  background-color: var(--color-fondo-suave);
+}
+
+.caja-info {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+}
+
+.caja-importante {
+  border-color: var(--color-secundario);
+  background-color: #fef2f2;
+}
+
+.caja-recuerda {
+  border-color: #eab308;
+  background-color: #fefce8;
+}
+
+.caja-actividad {
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+}
+
+.caja-didactica h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* Cuadrícula de Tarjetas de Contenido */
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.tarjeta-item {
+  background: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tarjeta-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+/* Desplegables Interactivos (Soluciones y Pistas sin JavaScript) */
+details.desplegable-didactico {
+  background: #f8fafc;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+}
+
+details.desplegable-didactico summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-primario);
+  outline: none;
+}
+
+details.desplegable-didactico[open] {
+  background: #ffffff;
+}
+
+details.desplegable-didactico .contenido-oculto {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-borde);
+}
+
+/* Tablas Adaptables con Estilo Limpio */
+.tabla-contenedor {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+table.tabla-educamadrid {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table.tabla-educamadrid th {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+table.tabla-educamadrid td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.9rem;
+}
+
+table.tabla-educamadrid tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
