@@ -10,7 +10,9 @@ Su propósito fundamental es proporcionar un entorno ágil, potente y automatiza
 
 * 🌐 **Sitio Web Oficial / Portal de Descargas**: [https://balejosg.github.io/archlinux-vm-educamadrid/](https://balejosg.github.io/archlinux-vm-educamadrid/)
 * 📖 **Caso de Estudio Técnico**: [https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html](https://balejosg.github.io/archlinux-vm-educamadrid/como-se-hizo.html)
-* 📦 **Descarga directa (.ova, ~1.8 GB)**: [ArchLinux-EducaMadrid.ova (v1.0.0)](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/ArchLinux-EducaMadrid.ova)
+* 📦 **Descarga directa (.zip, 1.73 GB)**: [ArchLinux-EducaMadrid.ova.zip (v1.0.0)](https://github.com/balejosg/archlinux-vm-educamadrid/releases/download/v1.0.0/ArchLinux-EducaMadrid.ova.zip)
+* 🔒 **SHA-256 (ZIP)**: `165f65c738bedbd55cc2c1086afd5e104d8195bfb1cdadaf7ee7961868652b7a`
+* 🔒 **SHA-256 (OVA descomprimido)**: `63f419f29805bb4b0a51ba87d407c59eaac145bdb41735e8d68365cacc328d6d`
 
 ---
 
